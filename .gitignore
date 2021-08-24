@@ -1,0 +1,8 @@
+#Carpeta bin
+/bin/
+
+#Archivos classpath
+*.classpath
+
+#Archivos ptoyect
+*.project
