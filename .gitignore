@@ -1,8 +1,11 @@
 #Carpeta bin
 /bin/
 
-#Archivos classpath
-*.classpath
+#Carpeta settings
+/.settings/
 
-#Archivos ptoyect
-*.project
+#Archivo classpath
+.classpath
+
+#Archivo project
+.project
