@@ -61,7 +61,7 @@ public class SimplePresentationScreen extends JFrame {
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		textFieldGithub = new JTextField();
+		textFieldGithub = new JTextField(studentData.getGithubURL());
 		textFieldGithub.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
@@ -76,16 +76,16 @@ public class SimplePresentationScreen extends JFrame {
 		JLabel lblLu = new JLabel("LU:");
 		lblLu.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		textFieldEmail = new JTextField();
+		textFieldEmail = new JTextField(studentData.getMail());
 		textFieldEmail.setColumns(10);
 		
-		textFieldApellido = new JTextField();
+		textFieldApellido = new JTextField(studentData.getLastName());
 		textFieldApellido.setColumns(10);
 		
-		textFieldNombre = new JTextField();
+		textFieldNombre = new JTextField(studentData.getFirstName());
 		textFieldNombre.setColumns(10);
 		
-		textFieldLegajo = new JTextField();
+		textFieldLegajo = new JTextField(String.valueOf(studentData.getId()));
 		textFieldLegajo.setColumns(10);
 		GroupLayout gl_tabInformation = new GroupLayout(tabInformation);
 		gl_tabInformation.setHorizontalGroup(
