@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -15,6 +14,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
@@ -43,7 +44,7 @@ public class SimplePresentationScreen extends JFrame {
 		
 		setTitle("TdP-DCIC-UNS 2021 :: Pantalla de presentación");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(new Dimension(634, 274));
+		setSize(new Dimension(700, 275));
 		setResizable(false);
 		setContentPane(contentPane);
 		
@@ -58,11 +59,11 @@ public class SimplePresentationScreen extends JFrame {
 		tabInformation.setPreferredSize(new Dimension(440, 250));
 		tabbedPane.addTab("Información del alumno", null, tabInformation, "Muestra la información declarada por el alumno");
 		
+		JLabel lblLu = new JLabel("LU:");
+		lblLu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
-		textFieldGithub = new JTextField(studentData.getGithubURL());
-		textFieldGithub.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -73,20 +74,32 @@ public class SimplePresentationScreen extends JFrame {
 		JLabel lblGithuburl = new JLabel("Github-URL:");
 		lblGithuburl.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel lblLu = new JLabel("LU:");
-		lblLu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		JLabel lblImagen = new JLabel("");
+		lblImagen.setSize(new Dimension(200, 200));
+		ImageIcon iconCara = new ImageIcon(SimplePresentationScreen.class.getResource("/images/fotoJano.jpg"));
+		Image fotoEscalada = iconCara.getImage().getScaledInstance(lblImagen.getWidth(),lblImagen.getHeight(), Image.SCALE_DEFAULT);
+		iconCara.setImage(fotoEscalada);
+		lblImagen.setIcon(iconCara);
 		
-		textFieldEmail = new JTextField(studentData.getMail());
-		textFieldEmail.setColumns(10);
+		FechaHoraActual fecha = new FechaHoraActual();
+		JLabel lblFechaHora = new JLabel(fecha.getMensajeFecha());
+		lblFechaHora.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		textFieldApellido = new JTextField(studentData.getLastName());
-		textFieldApellido.setColumns(10);
+		textFieldLegajo = new JTextField(String.valueOf(studentData.getId()));
+		textFieldLegajo.setColumns(10);
 		
 		textFieldNombre = new JTextField(studentData.getFirstName());
 		textFieldNombre.setColumns(10);
 		
-		textFieldLegajo = new JTextField(String.valueOf(studentData.getId()));
-		textFieldLegajo.setColumns(10);
+		textFieldApellido = new JTextField(studentData.getLastName());
+		textFieldApellido.setColumns(10);
+		
+		textFieldEmail = new JTextField(studentData.getMail());
+		textFieldEmail.setColumns(10);
+		
+		textFieldGithub = new JTextField(studentData.getGithubURL());
+		textFieldGithub.setColumns(10);
+
 		GroupLayout gl_tabInformation = new GroupLayout(tabInformation);
 		gl_tabInformation.setHorizontalGroup(
 			gl_tabInformation.createParallelGroup(Alignment.LEADING)
@@ -142,29 +155,26 @@ public class SimplePresentationScreen extends JFrame {
 		);
 		tabInformation.setLayout(gl_tabInformation);
 		
-		JLabel lblImagen = new JLabel("");
-
-		FechaHoraActual fecha = new FechaHoraActual();
-		JLabel lblFechaHora = new JLabel(fecha.getMensajeFecha());
-		
-		lblFechaHora.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblImagen, GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
-				.addComponent(lblFechaHora, GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblImagen, GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+						.addComponent(lblFechaHora, GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(lblImagen, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(tabbedPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblImagen, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblFechaHora, GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE))
+					.addComponent(lblFechaHora, GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
