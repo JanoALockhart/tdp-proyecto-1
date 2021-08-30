@@ -10,8 +10,8 @@ import java.util.Date;
  *
  */
 public class FechaHoraActual {
-	private SimpleDateFormat formateador;
-	private Date fecha;
+	private SimpleDateFormat formateador;//Establece el formato de presentacion de la fecha
+	private Date fecha;//Es la fecha actual
 	
 	/**
 	 * Constructor FechaHoraActual
@@ -23,7 +23,8 @@ public class FechaHoraActual {
 	
 	/**
 	 * Metodo que devuelve la frase con la fecha y la hora actual.
-	 * @return Un String con la frase con la fecha y hora actual.
+	 * @return Un String con la frase con la fecha y hora actual: "Esta ventana
+	 * fue generada el dd/MM/yyyy a las HH:mm:ss"
 	 */
 	public String getMensajeFecha() {
 		return formateador.format(fecha);
