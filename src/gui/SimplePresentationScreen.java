@@ -59,6 +59,7 @@ public class SimplePresentationScreen extends JFrame {
 		tabInformation.setPreferredSize(new Dimension(440, 250));
 		tabbedPane.addTab("Información del alumno", null, tabInformation, "Muestra la información declarada por el alumno");
 		
+		//LABELS
 		JLabel lblLu = new JLabel("LU:");
 		lblLu.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
@@ -74,17 +75,20 @@ public class SimplePresentationScreen extends JFrame {
 		JLabel lblGithuburl = new JLabel("Github-URL:");
 		lblGithuburl.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
+		//Imagen
 		JLabel lblImagen = new JLabel("");
 		lblImagen.setSize(new Dimension(200, 200));
-		ImageIcon iconCara = new ImageIcon(SimplePresentationScreen.class.getResource("/images/fotoJano.jpg"));
-		Image fotoEscalada = iconCara.getImage().getScaledInstance(lblImagen.getWidth(),lblImagen.getHeight(), Image.SCALE_DEFAULT);
+		ImageIcon iconCara = new ImageIcon(SimplePresentationScreen.class.getResource("/images/foto.png"));
+		Image fotoEscalada = iconCara.getImage().getScaledInstance(-1,lblImagen.getHeight(), Image.SCALE_SMOOTH);
 		iconCara.setImage(fotoEscalada);
 		lblImagen.setIcon(iconCara);
 		
+		//Fecha y hora
 		FechaHoraActual fecha = new FechaHoraActual();
 		JLabel lblFechaHora = new JLabel(fecha.getMensajeFecha());
 		lblFechaHora.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
+		//TEXTFIELDS
 		textFieldLegajo = new JTextField(String.valueOf(studentData.getId()));
 		textFieldLegajo.setColumns(10);
 		
