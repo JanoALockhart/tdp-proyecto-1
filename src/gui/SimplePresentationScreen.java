@@ -78,7 +78,7 @@ public class SimplePresentationScreen extends JFrame {
 		//Imagen
 		JLabel lblImagen = new JLabel("");
 		lblImagen.setSize(new Dimension(200, 200));
-		ImageIcon iconCara = new ImageIcon(SimplePresentationScreen.class.getResource("/images/foto.png"));
+		ImageIcon iconCara = new ImageIcon(SimplePresentationScreen.class.getResource(studentData.getPathPhoto()));
 		Image fotoEscalada = iconCara.getImage().getScaledInstance(-1,lblImagen.getHeight(), Image.SCALE_SMOOTH);
 		iconCara.setImage(fotoEscalada);
 		lblImagen.setIcon(iconCara);
